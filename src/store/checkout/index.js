@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-const useCheckoutStore = create(() => ({
+const useCheckoutStore = create((set) => ({
   deliveryDetails: {
     name: "",
     email: "",
@@ -10,11 +10,11 @@ const useCheckoutStore = create(() => ({
     zip: "",
     country: "",
   },
-  updateCheckoutData: (newCheckoutData) =>
+  updateDeliveryDetails: (newDeliveryDetails) =>
     set((state) => ({
       deliveryDetails: {
         ...state.deliveryDetails,
-        ...newCheckoutData,
+        ...newDeliveryDetails,
       },
     })),
 }));

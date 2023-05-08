@@ -1,9 +1,10 @@
 import React from "react";
+import { Main } from "./Page.styles";
 
 function Page({ children }) {
   return (
     <>
-      <main>{children}</main>
+      <Main>{children}</Main>
     </>
   );
 }

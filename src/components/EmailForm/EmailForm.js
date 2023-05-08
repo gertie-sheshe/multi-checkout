@@ -3,6 +3,8 @@ import FormCard from "@checkout/components/FormCard";
 import Button from "@checkout/ui/Button";
 import useCheckoutStore from "@checkout/store/checkout";
 
+import { Label, Input, HintText } from "./EmailFormStyles";
+
 function EmailForm() {
   const [email, setEmail] = useState("");
   const updateDeliveryDetails = useCheckoutStore(
@@ -23,9 +25,12 @@ function EmailForm() {
 
   return (
     <FormCard>
-      <label htmlFor="email">Email:</label>
-      <input id="email" type="email" value={email} onChange={handleChange} />
-      <Button onClick={handleClick}>Continue</Button>
+      <Label htmlFor="email">
+        <span>Email Address</span>
+        <HintText>So we can send you a receipt of your order</HintText>
+      </Label>
+      <Input id="email" type="email" value={email} onChange={handleChange} />
+      <Button handleClick={handleClick}>Continue</Button>
     </FormCard>
   );
 }

@@ -1,8 +1,8 @@
 import React from "react";
 import { Button as StyledButton } from "./ButtonStyles";
 
-function Button({ children }) {
-  return <StyledButton>{children}</StyledButton>;
+function Button({ children, handleClick }) {
+  return <StyledButton onClick={handleClick}>{children}</StyledButton>;
 }
 
 export default Button;

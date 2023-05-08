@@ -5,6 +5,7 @@ const useCheckoutStore = create((set) => ({
     name: "",
     email: "",
     address: "",
+    phoneNumber: "",
     city: "",
     state: "",
     zip: "",

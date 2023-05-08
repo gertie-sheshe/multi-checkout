@@ -1,7 +1,8 @@
 import React from "react";
+import { Form } from "./FormCardStyles";
 
-function FormCard() {
-  return <div>FormCard</div>;
+function FormCard({ children }) {
+  return <Form>{children}</Form>;
 }
 
 export default FormCard;

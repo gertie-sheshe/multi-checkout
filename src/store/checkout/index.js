@@ -4,8 +4,9 @@ const useCheckoutStore = create((set) => ({
   deliveryDetails: {
     name: "",
     email: "",
-    address: "",
     phoneNumber: "",
+    addressLine1: "",
+    addressLine2: "",
     city: "",
     state: "",
     zip: "",

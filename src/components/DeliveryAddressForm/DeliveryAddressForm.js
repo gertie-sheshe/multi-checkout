@@ -27,7 +27,10 @@ function DeliveryAddressForm() {
   const handleClick = (event) => {
     event.preventDefault();
     updateDeliveryDetails({
-      phoneNumber: contact,
+      addressLine1: state.address1,
+      addressLine2: state.address2,
+      city: state.city,
+      zip: state.zip,
     });
   };
 

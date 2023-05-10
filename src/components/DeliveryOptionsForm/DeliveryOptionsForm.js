@@ -39,7 +39,7 @@ function DeliveryOptionsForm() {
             checked={selectedOption === "Standard"}
             onChange={handleChange}
           />
-          <label for="option">Standard (Free, 2-3 days)</label>
+          <label htmlFor="option">Standard (Free, 2-3 days)</label>
         </OptionContainer>
         <OptionContainer>
           <input
@@ -50,7 +50,7 @@ function DeliveryOptionsForm() {
             checked={selectedOption === "Premium"}
             onChange={handleChange}
           />
-          <label for="option2">Premium (Next Day, 500Kshs)</label>
+          <label htmlFor="option2">Premium (Next Day, 500Kshs)</label>
         </OptionContainer>
       </Fieldset>
 

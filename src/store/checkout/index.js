@@ -36,11 +36,12 @@ const useCheckoutStore = create((set) => ({
     phoneNumber: "",
     addressLine1: "",
     addressLine2: "",
-    deliveryOption: "",
     city: "",
     state: "",
     zip: "",
     country: "",
+    deliveryOption: "",
+    deliveryNote: "",
   },
   updateDeliveryDetails: (newDeliveryDetails) =>
     set((state) => ({

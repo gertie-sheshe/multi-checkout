@@ -42,6 +42,11 @@ const useCheckoutStore = create((set) => ({
     country: "",
     deliveryOption: "",
     deliveryNote: "",
+    payment: {
+      cardNumber: "",
+      expiryDate: "",
+      securityNumber: "",
+    },
   },
   updateDeliveryDetails: (newDeliveryDetails) =>
     set((state) => ({

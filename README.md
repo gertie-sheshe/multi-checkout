@@ -1,38 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Accessible, Usable MultiPage Checkout Form
 
-## Getting Started
+Guidelines for building checkout forms with best practices in usability and accessibility that enhance user experience.
 
-First, run the development server:
+## Table Of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- [Project Description.](#project-description)
+- [Technologies Used.](#technologies-used)
+- [Best Practices.](#best-practices)
+- [Other Forms.](#other-forms)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Project Description
+This Checkout Form project is a series of projects focused on creating user-friendly and accessible forms using best practices and patterns. The aim is to provide guidance and examples for building various types of forms.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Each project within this series demonstrates the implementation of form best practices. By following these practices, you can improve the usability and accessibility of your forms, ensuring a seamless user experience for all.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Technologies Used
+This project utilizes the following technologies:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **NextJS:** NextJS is a React framework that enables server-side rendering, routing, and other useful features for building modern web applications.
 
-## Learn More
+- **Zustand:** Zustand is a lightweight state management library for React applications. It provides a simple and efficient way to manage state within components.
 
-To learn more about Next.js, take a look at the following resources:
+- **Styled-components:** Styled-components is a CSS-in-JS library that allows you to write CSS code directly within your JavaScript files. It offers a convenient way to style components in a modular and reusable manner.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Best Practices
+Example best practices:
+- **Proper Semantics:** Use of appropriate HTML elements, such as `<input>`, `<form>`, and `<fieldset>`, to ensure proper structure and semantics.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Control Grouping:** Grouped related controls using `<fieldset>` and `<legend>`. For example, group radio buttons or checkboxes within a fieldset to provide context and improve usability.
 
-## Deploy on Vercel
+- **Multi-Page:** For this form, I took a multi-page approach to reduce cognitive pressure on the user. Break the form into logical sections or steps and guide the user through the process.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Labels:** Proper use of <label> elements for form controls. This helps screen readers associate labels with corresponding controls, making the form more accessible.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **ARIA Attributes:** Use ARIA attributes, such as `aria-live` and , to provide additional information and improve accessibility for users relying on assistive technologies
+  
+ ## Other Forms
+  Other forms in this series will be linked here

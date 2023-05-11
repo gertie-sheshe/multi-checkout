@@ -1,7 +1,15 @@
-export const createPaymentMethod = async (stripe) => {
+export const createPaymentMethod = async (stripe, cardData) => {
   try {
+    const { cardNumber, expiryDate, securityNumber } = cardData;
+
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
+      card: {
+        number: cardNumber,
+        exp_month: expiryDate.split("/")[0].trim(),
+        exp_year: expiryDate.split("/")[1].trim(),
+        cvc: securityNumber,
+      },
     });
 
     if (error) {

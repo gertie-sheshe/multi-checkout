@@ -21,7 +21,10 @@ function DeliveryAddressForm() {
     const value = event.target.value;
     const name = event.target.name;
 
-    setState({ ...state, [name]: value });
+    setState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   const handleClick = (event) => {

@@ -45,7 +45,7 @@ function PaymentForm() {
       </Label>
       <Input
         id="cardNumber"
-        type="email"
+        type="text"
         value={paymentDetails.cardNumber}
         onChange={handleChange}
       />
@@ -56,7 +56,7 @@ function PaymentForm() {
       </Label>
       <Input
         id="expirydate"
-        type="email"
+        type="text"
         value={paymentDetails.expiryDate}
         onChange={handleChange}
       />
@@ -67,7 +67,7 @@ function PaymentForm() {
       </Label>
       <Input
         id="security"
-        type="email"
+        type="number"
         value={paymentDetails.securityNumber}
         onChange={handleChange}
       />

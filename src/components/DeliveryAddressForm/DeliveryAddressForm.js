@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import FormCard from "@checkout/components/FormCard";
 import Button from "@checkout/ui/Button";
+
 import useCheckoutStore from "@checkout/store/checkout";
 
-import { Label, Input, HintText } from "./DeliveryAddressStyles";
+import { Label, Input } from "./DeliveryAddressStyles";
 
 function DeliveryAddressForm() {
   const [state, setState] = useState({

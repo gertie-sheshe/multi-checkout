@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import FormCard from "@checkout/components/FormCard";
 import Button from "@checkout/ui/Button";
+import HintText from "@checkout/components/HintText";
+
 import useCheckoutStore from "@checkout/store/checkout";
 
-import { Label, Input, HintText } from "./EmailFormStyles";
+import { Label, Input } from "./EmailFormStyles";
 
 function EmailForm() {
   const [email, setEmail] = useState("");

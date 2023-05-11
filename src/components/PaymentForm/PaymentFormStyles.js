@@ -11,9 +11,3 @@ export const Input = styled.input`
   width: 400px;
   margin-bottom: 40px;
 `;
-
-export const HintText = styled.span`
-  display: block;
-  margin-top: 10px;
-  font-style: italic;
-`;

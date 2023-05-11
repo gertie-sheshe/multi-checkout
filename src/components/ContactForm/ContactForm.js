@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import FormCard from "@checkout/components/FormCard";
 import Button from "@checkout/ui/Button";
+import HintText from "@checkout/components/HintText";
 import useCheckoutStore from "@checkout/store/checkout";
 
-import { Label, Input, HintText } from "./ContactFormStyles";
+import { Label, Input } from "./ContactFormStyles";
 
 function ContactForm() {
   const [contact, setContact] = useState("");

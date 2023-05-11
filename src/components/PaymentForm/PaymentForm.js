@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import FormCard from "@checkout/components/FormCard";
 import Button from "@checkout/ui/Button";
-import StripeWrapper from "../StripeWrapper";
+import HintText from "@checkout/components/HintText";
 
 import useCheckoutStore from "@checkout/store/checkout";
 
-import { Label, Input, HintText } from "./PaymentFormStyles";
+import { Label, Input } from "./PaymentFormStyles";
 
 function PaymentForm() {
   const [paymentDetails, setPaymentDetails] = useState({

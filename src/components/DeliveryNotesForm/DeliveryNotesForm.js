@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import FormCard from "@checkout/components/FormCard";
 import Button from "@checkout/ui/Button";
+import HintText from "@checkout/components/HintText";
+
 import useCheckoutStore from "@checkout/store/checkout";
 
 import {
   Label,
   TextArea,
-  HintText,
   RemainingCharacters,
 } from "./DeliveryNotesFormStyles";
 

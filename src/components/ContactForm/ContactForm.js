@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import FormCard from "@checkout/components/FormCard";
 import Button from "@checkout/ui/Button";
 import HintText from "@checkout/components/HintText";
 import useCheckoutStore from "@checkout/store/checkout";
 
 import { Label, Input } from "./ContactFormStyles";
+import { ButtonContainer } from "@checkout/shared/styles";
 
 function ContactForm() {
+  const router = useRouter();
   const [contact, setContact] = useState("");
   const updateDeliveryDetails = useCheckoutStore(
     (state) => state.updateDeliveryDetails
@@ -17,11 +20,19 @@ function ContactForm() {
     setContact(phoneNumber);
   };
 
-  const handleClick = (event) => {
+  const handleNext = (event) => {
     event.preventDefault();
     updateDeliveryDetails({
       phoneNumber: contact,
     });
+
+    router.push("/checkout/delivery-address");
+  };
+
+  const handlePrevious = (event) => {
+    event.preventDefault();
+
+    router.push("/checkout/email");
   };
 
   return (
@@ -31,7 +42,10 @@ function ContactForm() {
         <HintText>So we can notify you about delivery</HintText>
       </Label>
       <Input id="contact" type="tel" value={contact} onChange={handleChange} />
-      <Button handleClick={handleClick}>Continue</Button>
+      <ButtonContainer>
+        <Button handleClick={handlePrevious}>Previous</Button>
+        <Button handleClick={handleNext}>Continue</Button>
+      </ButtonContainer>
     </FormCard>
   );
 }

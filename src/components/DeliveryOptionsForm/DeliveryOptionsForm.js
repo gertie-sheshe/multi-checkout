@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import FormCard from "@checkout/components/FormCard";
 import Button from "@checkout/ui/Button";
 import useCheckoutStore from "@checkout/store/checkout";
 
 import { OptionContainer, Fieldset } from "./DeliveryOptionsStyles";
+import { ButtonContainer } from "@checkout/shared/styles";
 
 function DeliveryOptionsForm() {
+  const router = useRouter();
   const [selectedOption, setSelectedOption] = useState("Standard");
 
   const updateDeliveryDetails = useCheckoutStore(
@@ -17,11 +20,19 @@ function DeliveryOptionsForm() {
     setSelectedOption(value);
   };
 
-  const handleClick = (event) => {
+  const handleNext = (event) => {
     event.preventDefault();
     updateDeliveryDetails({
       deliveryOption: selectedOption,
     });
+
+    router.push("/checkout/delivery-notes");
+  };
+
+  const handlePrevious = (event) => {
+    event.preventDefault();
+
+    router.push("/checkout/delivery-address");
   };
 
   return (
@@ -54,7 +65,10 @@ function DeliveryOptionsForm() {
         </OptionContainer>
       </Fieldset>
 
-      <Button handleClick={handleClick}>Continue</Button>
+      <ButtonContainer>
+        <Button handleClick={handlePrevious}>Previous</Button>
+        <Button handleClick={handleNext}>Continue</Button>
+      </ButtonContainer>
     </FormCard>
   );
 }

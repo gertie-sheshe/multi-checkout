@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import FormCard from "@checkout/components/FormCard";
 import Button from "@checkout/ui/Button";
 import HintText from "@checkout/components/HintText";
@@ -10,8 +11,10 @@ import {
   TextArea,
   RemainingCharacters,
 } from "./DeliveryNotesFormStyles";
+import { ButtonContainer } from "@checkout/shared/styles";
 
 function DeliveryNotesForm() {
+  const router = useRouter();
   const [note, setNote] = useState("");
   const [charCount, setCharCount] = useState(150);
 
@@ -58,11 +61,19 @@ function DeliveryNotesForm() {
     setCharCount(remainingChars);
   };
 
-  const handleClick = (event) => {
+  const handleNext = (event) => {
     event.preventDefault();
     updateDeliveryDetails({
       deliveryNote: note,
     });
+
+    router.push("/checkout/review");
+  };
+
+  const handlePrevious = (event) => {
+    event.preventDefault();
+
+    router.push("/checkout/delivery-options");
   };
 
   return (
@@ -86,7 +97,10 @@ function DeliveryNotesForm() {
         role="status"
         aria-live="polite"
       >{`You have ${charCount} characters left`}</RemainingCharacters>
-      <Button handleClick={handleClick}>Continue</Button>
+      <ButtonContainer>
+        <Button handleClick={handlePrevious}>Previous</Button>
+        <Button handleClick={handleNext}>Proceed to Review</Button>
+      </ButtonContainer>
     </FormCard>
   );
 }

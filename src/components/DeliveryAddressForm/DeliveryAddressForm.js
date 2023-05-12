@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import FormCard from "@checkout/components/FormCard";
 import Button from "@checkout/ui/Button";
 
 import useCheckoutStore from "@checkout/store/checkout";
 
 import { Label, Input } from "./DeliveryAddressStyles";
+import { ButtonContainer } from "@checkout/shared/styles";
 
 function DeliveryAddressForm() {
+  const router = useRouter();
   const [state, setState] = useState({
     address1: "",
     address2: "",
@@ -28,7 +31,7 @@ function DeliveryAddressForm() {
     }));
   };
 
-  const handleClick = (event) => {
+  const handleNext = (event) => {
     event.preventDefault();
     updateDeliveryDetails({
       addressLine1: state.address1,
@@ -36,6 +39,14 @@ function DeliveryAddressForm() {
       city: state.city,
       zip: state.zip,
     });
+
+    router.push("/checkout/delivery-options");
+  };
+
+  const handlePrevious = (event) => {
+    event.preventDefault();
+
+    router.push("/checkout/phone");
   };
 
   return (
@@ -76,7 +87,10 @@ function DeliveryAddressForm() {
         onChange={handleChange}
       />
 
-      <Button handleClick={handleClick}>Continue</Button>
+      <ButtonContainer>
+        <Button handleClick={handlePrevious}>Previous</Button>
+        <Button handleClick={handleNext}>Continue</Button>
+      </ButtonContainer>
     </FormCard>
   );
 }

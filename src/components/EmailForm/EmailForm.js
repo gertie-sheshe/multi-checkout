@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import FormCard from "@checkout/components/FormCard";
 import Button from "@checkout/ui/Button";
 import HintText from "@checkout/components/HintText";
@@ -8,6 +9,7 @@ import useCheckoutStore from "@checkout/store/checkout";
 import { Label, Input } from "./EmailFormStyles";
 
 function EmailForm() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const updateDeliveryDetails = useCheckoutStore(
     (state) => state.updateDeliveryDetails
@@ -23,6 +25,8 @@ function EmailForm() {
     updateDeliveryDetails({
       email,
     });
+
+    router.push("/checkout/phone");
   };
 
   return (

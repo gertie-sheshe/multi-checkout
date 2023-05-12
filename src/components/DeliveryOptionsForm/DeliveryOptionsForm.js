@@ -9,7 +9,9 @@ import { ButtonContainer } from "@checkout/shared/styles";
 
 function DeliveryOptionsForm() {
   const router = useRouter();
-  const [selectedOption, setSelectedOption] = useState("Standard");
+  const [selectedOption, setSelectedOption] = useState(
+    useCheckoutStore((state) => state.deliveryDetails.deliveryOption)
+  );
 
   const updateDeliveryDetails = useCheckoutStore(
     (state) => state.updateDeliveryDetails

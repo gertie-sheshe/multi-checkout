@@ -10,12 +10,21 @@ import { ButtonContainer } from "@checkout/shared/styles";
 
 function DeliveryAddressForm() {
   const router = useRouter();
-  const [state, setState] = useState({
-    address1: "",
-    address2: "",
-    zip: "",
-    city: "",
-  });
+
+  const [state, setState] = useState(
+    useCheckoutStore((state) => {
+      const {
+        deliveryDetails: { addressLine1, addressLine2, zip, city },
+      } = state;
+
+      return {
+        address1: addressLine1,
+        address2: addressLine2,
+        zip,
+        city,
+      };
+    })
+  );
 
   const updateDeliveryDetails = useCheckoutStore(
     (state) => state.updateDeliveryDetails

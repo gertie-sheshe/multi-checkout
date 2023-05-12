@@ -10,7 +10,9 @@ import { ButtonContainer } from "@checkout/shared/styles";
 
 function ContactForm() {
   const router = useRouter();
-  const [contact, setContact] = useState("");
+  const [contact, setContact] = useState(
+    useCheckoutStore((state) => state.deliveryDetails.phoneNumber)
+  );
   const updateDeliveryDetails = useCheckoutStore(
     (state) => state.updateDeliveryDetails
   );

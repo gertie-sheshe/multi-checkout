@@ -10,14 +10,17 @@ import { Label, Input } from "./EmailFormStyles";
 
 function EmailForm() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(
+    useCheckoutStore((state) => state.deliveryDetails.email)
+  );
+
   const updateDeliveryDetails = useCheckoutStore(
     (state) => state.updateDeliveryDetails
   );
 
   const handleChange = (event) => {
-    const email = event.target.value;
-    setEmail(email);
+    const { value } = event.target;
+    setEmail(value);
   };
 
   const handleClick = (event) => {

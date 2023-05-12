@@ -15,7 +15,9 @@ import { ButtonContainer } from "@checkout/shared/styles";
 
 function DeliveryNotesForm() {
   const router = useRouter();
-  const [note, setNote] = useState("");
+  const [note, setNote] = useState(
+    useCheckoutStore((state) => state.deliveryDetails.deliveryNote)
+  );
   const [charCount, setCharCount] = useState(150);
 
   const updateDeliveryDetails = useCheckoutStore(

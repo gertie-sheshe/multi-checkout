@@ -4,10 +4,12 @@ import Button from "@checkout/ui/Button";
 import HintText from "@checkout/components/HintText";
 
 import useCheckoutStore from "@checkout/store/checkout";
+import { useRouter } from "next/router";
 
 import { Label, Input } from "./PaymentFormStyles";
 
 function PaymentForm() {
+  const router = useRouter();
   const [paymentDetails, setPaymentDetails] = useState({
     cardNumber: "",
     expiryDate: "",
@@ -30,11 +32,7 @@ function PaymentForm() {
   const handleClick = (event) => {
     event.preventDefault();
 
-    updateDeliveryDetails({
-      payment: {
-        ...paymentDetails,
-      },
-    });
+    router.push("/checkout/confirm");
   };
 
   return (
@@ -71,7 +69,7 @@ function PaymentForm() {
         value={paymentDetails.securityNumber}
         onChange={handleChange}
       />
-      <Button handleClick={handleClick}>Continue</Button>
+      <Button handleClick={handleClick}>Place Order</Button>
     </FormCard>
   );
 }

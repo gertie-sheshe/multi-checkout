@@ -1,16 +1,28 @@
 import React from "react";
 import Link from "next/link";
+import Button from "@checkout/ui/Button";
 import useCheckoutStore from "@checkout/store/checkout";
+
+import { useRouter } from "next/router";
 
 import { DeliveryDetailContainer, P } from "./DeliveryDetailsStyles";
 
-function UserDetails() {
+function DeliveryDetails() {
+  const router = useRouter();
   const deliveryDetails = useCheckoutStore((state) => state.deliveryDetails);
 
   if (!deliveryDetails) return;
 
   const { email, phoneNumber, addressLine1, deliveryOption, deliveryNote } =
     deliveryDetails;
+
+  const handleClick = (event) => {
+    event.preventDefault();
+
+    console.log("HMMM");
+
+    router.push("/checkout/payment");
+  };
 
   return (
     <div>
@@ -38,8 +50,10 @@ function UserDetails() {
         <P>Notes: {`${deliveryNote}`}</P>
         <Link href="/checkout/delivery-notes">Edit</Link>
       </DeliveryDetailContainer>
+
+      <Button handleClick={handleClick}>Proceed to Payment</Button>
     </div>
   );
 }
 
-export default UserDetails;
+export default DeliveryDetails;

@@ -6,7 +6,7 @@ function Confirm() {
   return (
     <Page>
       <Meta title="Confirm Form" description="" />
-      <div>Confirm</div>
+      <p>Congratulations! Your order has been placed succesfully</p>
     </Page>
   );
 }

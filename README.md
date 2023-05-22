@@ -36,5 +36,22 @@ Example best practices:
 
 - **ARIA Attributes:** Use ARIA attributes, such as `aria-live` and , to provide additional information and improve accessibility for users relying on assistive technologies
   
+### Validation
+- HTML5 relies on the `required` attribute to communicate a required field. This attribute however does not have support on some old browsers and it is not implemented uniformly. Because of this, you can choose to explore custom validation.
+
+- Use of `aria-required` communicates to users of assistive tech that the field is required.
+
+- Client-side validation is helpful on its own - reduces network and server load. However, it cannot be fully relied on and should be paired with server-side validation.
+  
+### Error Handling and Notification
+- There are various ways to communicate error feedback back to the user.
+
+- For this form, I am displaying an error summary at the top of the form, and also including inline error for each field that is invalid.
+
+- The summary section at the top communicates the feedback generally. Having this section in a [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) communicates the feedback to assistive technology users.
+  
+- Appending the error hint inside the `label` attribute ensures it is read out to screen reader users.
+
+  
  ## Other Forms
   Other forms in this series will be linked here

@@ -6,10 +6,20 @@ import HintText from "@checkout/components/HintText";
 
 import useCheckoutStore from "@checkout/store/checkout";
 
-import { Label, Input } from "./EmailFormStyles";
+import {
+  Label,
+  Input,
+  ErrorSummary,
+  ErrorContainer,
+  ErrorText,
+} from "./EmailFormStyles";
 
 function EmailForm() {
   const router = useRouter();
+
+  const [errorSummary, setErrorSummary] = useState(null);
+  const [emailErrorMessage, setEmailErrorMessage] = useState("");
+
   const [email, setEmail] = useState(
     useCheckoutStore((state) => state.deliveryDetails.email)
   );
@@ -23,20 +33,46 @@ function EmailForm() {
     setEmail(value);
   };
 
+  const validateForm = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!email) {
+      setEmailErrorMessage("Email is required");
+      setErrorSummary("There are errors on the form");
+      return false;
+    }
+
+    if (!emailRegex.test(email)) {
+      setEmailErrorMessage("Invalid email address");
+      setErrorSummary("There are errors on the form");
+      return false;
+    }
+
+    setEmailErrorMessage("");
+    setErrorSummary("");
+    return true;
+  };
+
   const handleClick = (event) => {
     event.preventDefault();
-    updateDeliveryDetails({
-      email,
-    });
+    if (validateForm()) {
+      updateDeliveryDetails({
+        email,
+      });
 
-    router.push("/checkout/phone");
+      router.push("/checkout/phone");
+    }
   };
 
   return (
     <FormCard>
+      <ErrorContainer aria-live="assertive">
+        <ErrorSummary>{errorSummary}</ErrorSummary>
+      </ErrorContainer>
       <Label htmlFor="email">
         <span>Email Address</span>
         <HintText>So we can send you a receipt of your order</HintText>
+        {emailErrorMessage && <ErrorText>{emailErrorMessage}</ErrorText>}
       </Label>
       <Input id="email" type="email" value={email} onChange={handleChange} />
       <Button handleClick={handleClick}>Continue</Button>

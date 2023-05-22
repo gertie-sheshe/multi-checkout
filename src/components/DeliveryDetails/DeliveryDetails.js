@@ -19,8 +19,6 @@ function DeliveryDetails() {
   const handleClick = (event) => {
     event.preventDefault();
 
-    console.log("HMMM");
-
     router.push("/checkout/payment");
   };
 

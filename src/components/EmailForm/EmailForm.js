@@ -3,16 +3,12 @@ import { useRouter } from "next/router";
 import FormCard from "@checkout/components/FormCard";
 import Button from "@checkout/ui/Button";
 import HintText from "@checkout/components/HintText";
+import ErrorSummary from "@checkout/components/ErrorSummary";
+import ErrorText from "@checkout/components/ErrorText";
 
 import useCheckoutStore from "@checkout/store/checkout";
 
-import {
-  Label,
-  Input,
-  ErrorSummary,
-  ErrorContainer,
-  ErrorText,
-} from "./EmailFormStyles";
+import { Label, Input } from "./EmailFormStyles";
 
 function EmailForm() {
   const router = useRouter();
@@ -66,13 +62,11 @@ function EmailForm() {
 
   return (
     <FormCard>
-      <ErrorContainer aria-live="assertive">
-        <ErrorSummary>{errorSummary}</ErrorSummary>
-      </ErrorContainer>
+      <ErrorSummary message={errorSummary} />
       <Label htmlFor="email">
         <span>Email Address</span>
         <HintText>So we can send you a receipt of your order</HintText>
-        {emailErrorMessage && <ErrorText>{emailErrorMessage}</ErrorText>}
+        {emailErrorMessage && <ErrorText text={emailErrorMessage} />}
       </Label>
       <Input id="email" type="email" value={email} onChange={handleChange} />
       <Button handleClick={handleClick}>Continue</Button>

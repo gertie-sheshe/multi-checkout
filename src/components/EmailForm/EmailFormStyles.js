@@ -20,10 +20,3 @@ export const ErrorSummary = styled.p`
   font-weight: bold;
   color: red;
 `;
-
-export const ErrorText = styled.span`
-  color: red;
-  font-style: italic;
-  padding: 5px 0;
-  display: block;
-`;

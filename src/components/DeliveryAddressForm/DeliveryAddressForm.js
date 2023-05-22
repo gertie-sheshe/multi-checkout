@@ -10,6 +10,8 @@ import { ButtonContainer } from "@checkout/shared/styles";
 
 function DeliveryAddressForm() {
   const router = useRouter();
+  const [errors, setErrors] = useState({});
+  const [errorSummary, setErrorSummary] = useState("");
 
   const [state, setState] = useState(
     useCheckoutStore((state) => {
@@ -52,10 +54,26 @@ function DeliveryAddressForm() {
     router.push("/checkout/delivery-options");
   };
 
+  const validateForm = () => {
+    const { address1, city, zip } = errors;
+    const newErrors = {};
+
+    if (!address1) newErrors.address1 = "Address Line1 is required";
+    if (!city) newErrors.city = "City is required";
+    if (!zip) newErrors.zip = "Zip code is required";
+
+    setErrors(newErrors);
+    setErrorSummary("Something is wrong. There are errors on the page");
+
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handlePrevious = (event) => {
     event.preventDefault();
 
-    router.push("/checkout/phone");
+    if (validateForm()) {
+      router.push("/checkout/phone");
+    }
   };
 
   return (

@@ -68,7 +68,13 @@ function EmailForm() {
         <HintText>So we can send you a receipt of your order</HintText>
         {emailErrorMessage && <ErrorText text={emailErrorMessage} />}
       </Label>
-      <Input id="email" type="email" value={email} onChange={handleChange} />
+      <Input
+        id="email"
+        type="email"
+        value={email}
+        aria-invalid={emailErrorMessage ? "true" : "false"}
+        onChange={handleChange}
+      />
       <Button handleClick={handleClick}>Continue</Button>
     </FormCard>
   );

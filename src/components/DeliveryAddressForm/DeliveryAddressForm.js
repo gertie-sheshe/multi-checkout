@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import FormCard from "@checkout/components/FormCard";
 import Button from "@checkout/ui/Button";
+import ErrorSummary from "@checkout/components/ErrorSummary";
+import ErrorText from "@checkout/components/ErrorText";
 
 import useCheckoutStore from "@checkout/store/checkout";
 
@@ -42,48 +44,53 @@ function DeliveryAddressForm() {
     }));
   };
 
-  const handleNext = (event) => {
-    event.preventDefault();
-    updateDeliveryDetails({
-      addressLine1: state.address1,
-      addressLine2: state.address2,
-      city: state.city,
-      zip: state.zip,
-    });
-
-    router.push("/checkout/delivery-options");
-  };
-
   const validateForm = () => {
-    const { address1, city, zip } = errors;
+    const { address1, city, zip } = state;
     const newErrors = {};
 
-    if (!address1) newErrors.address1 = "Address Line1 is required";
+    if (!address1) newErrors.address1 = "Address Line 1 is required";
     if (!city) newErrors.city = "City is required";
     if (!zip) newErrors.zip = "Zip code is required";
 
     setErrors(newErrors);
-    setErrorSummary("Something is wrong. There are errors on the page");
+    setErrorSummary("Something is wrong. There are errors on the form");
 
     return Object.keys(newErrors).length === 0;
   };
 
-  const handlePrevious = (event) => {
+  const handleNext = (event) => {
     event.preventDefault();
 
     if (validateForm()) {
-      router.push("/checkout/phone");
+      updateDeliveryDetails({
+        addressLine1: state.address1,
+        addressLine2: state.address2,
+        city: state.city,
+        zip: state.zip,
+      });
+
+      router.push("/checkout/delivery-options");
     }
+  };
+
+  const handlePrevious = (event) => {
+    event.preventDefault();
+    router.push("/checkout/phone");
   };
 
   return (
     <FormCard>
-      <Label htmlFor="address1">Address Line 1</Label>
+      <ErrorSummary message={errorSummary} />
+      <Label htmlFor="address1">
+        <span>Address Line 1</span>
+        {errors.address1 && <ErrorText text={errors.address1} />}
+      </Label>
       <Input
         name="address1"
         id="address1"
         type="text"
         value={state.address1}
+        aria-invalid={errors.address1 ? "true" : "false"}
         onChange={handleChange}
       />
 
@@ -96,21 +103,29 @@ function DeliveryAddressForm() {
         onChange={handleChange}
       />
 
-      <Label htmlFor="city">City</Label>
+      <Label htmlFor="city">
+        <span>City</span>
+        {errors.city && <ErrorText text={errors.city} />}
+      </Label>
       <Input
         name="city"
         id="city"
         type="text"
         value={state.city}
+        aria-invalid={errors.city ? "true" : "false"}
         onChange={handleChange}
       />
 
-      <Label htmlFor="zip">Zip Code</Label>
+      <Label htmlFor="zip">
+        <span>Zip Code</span>
+        {errors.zip && <ErrorText text={errors.zip} />}
+      </Label>
       <Input
         name="zip"
         id="zip"
         type="text"
         value={state.zip}
+        aria-invalid={errors.zip ? "true" : "false"}
         onChange={handleChange}
       />
 

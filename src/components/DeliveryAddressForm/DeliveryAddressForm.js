@@ -89,6 +89,7 @@ function DeliveryAddressForm() {
         name="address1"
         id="address1"
         type="text"
+        aria-required="true"
         value={state.address1}
         aria-invalid={errors.address1 ? "true" : "false"}
         onChange={handleChange}
@@ -112,6 +113,7 @@ function DeliveryAddressForm() {
         id="city"
         type="text"
         value={state.city}
+        aria-required="true"
         aria-invalid={errors.city ? "true" : "false"}
         onChange={handleChange}
       />
@@ -125,6 +127,7 @@ function DeliveryAddressForm() {
         id="zip"
         type="text"
         value={state.zip}
+        aria-required="true"
         aria-invalid={errors.zip ? "true" : "false"}
         onChange={handleChange}
       />

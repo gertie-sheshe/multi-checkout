@@ -72,6 +72,7 @@ function EmailForm() {
         id="email"
         type="email"
         value={email}
+        aria-required="true"
         aria-invalid={emailErrorMessage ? "true" : "false"}
         onChange={handleChange}
       />

@@ -24,8 +24,7 @@ This project utilizes the following technologies:
 
 - **Styled-components:** Styled-components is a CSS-in-JS library that allows you to write CSS code directly within your JavaScript files. It offers a convenient way to style components in a modular and reusable manner.
 
-## Best Practices
-Example best practices:
+## Recommendations
 - **Proper Semantics:** Use of appropriate HTML elements, such as `<input>`, `<form>`, and `<fieldset>`, to ensure proper structure and semantics.
 
 - **Control Grouping:** Grouped related controls using `<fieldset>` and `<legend>`. For example, group radio buttons or checkboxes within a fieldset to provide context and improve usability.

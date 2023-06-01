@@ -6,7 +6,7 @@ Guidelines for building checkout forms with best practices in usability and acce
 
 - [Project Description.](#project-description)
 - [Technologies Used.](#technologies-used)
-- [Best Practices.](#best-practices)
+- [Recommendations](#recommendations)
 - [Other Forms.](#other-forms)
 
 
@@ -23,6 +23,10 @@ This project utilizes the following technologies:
 - **Zustand:** Zustand is a lightweight state management library for React applications. It provides a simple and efficient way to manage state within components.
 
 - **Styled-components:** Styled-components is a CSS-in-JS library that allows you to write CSS code directly within your JavaScript files. It offers a convenient way to style components in a modular and reusable manner.
+
+
+### :warning: **NOTE!** 
+My use of styled-components in this small project is not a recommendation of production best practice. Please read [this article](https://dev.to/srmagura/why-were-breaking-up-wiht-css-in-js-4g9b) to understand the performance implications of using the CSS-in-JS pattern.
 
 ## Recommendations
 - **Proper Semantics:** Use of appropriate HTML elements, such as `<input>`, `<form>`, and `<fieldset>`, to ensure proper structure and semantics.
